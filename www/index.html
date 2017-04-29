@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+        <link rel="stylesheet"  href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+        <script src="https://code.jquery.com/jquery-2.1.4.js" integrity="sha256-siFczlgw4jULnUICcdm9gjQPZkw/YPDqhQ9+nAOScE4=" crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/toDoList.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <title>Personal Helper</title>
+    </head>
+
+    <body>	
+    
+	   <div data-role="popup" id="popupMenu" data-transition="pop" data-theme="a">
+		  <a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+		  <ul data-role="listview">
+			<li><a href="#home" class="ui-btn">Home</a></li>
+			<li><a href="#toDoPage" class="ui-btn">To-Do List</a></li
+			<li><a href="#distPage" class="ui-btn">Distance</a></li>
+			<li><a href="#moneyPage" class="ui-btn">Money Tracker</a></li>
+		  </ul>
+	   </div>
+	
+	   <div data-role="header" data-theme="a" data-position="fixed">
+		  <h1></h1>
+		
+	 	 <a href="#popupMenu" data-rel="popup" data-transition="flip" class="ui-btn ui-btn-inline  ui-corner-all ui-icon-bars ui-btn-icon-notext">Menu</a>
+	 	
+		<div data-role="navbar" id="navi">
+			<ul>
+				<li><a href="#home" class="ui-btn ui-icon-home ui-btn-icon-top  ui-mini">Home</a></li>
+				<li><a href="#toDoPage" class="ui-btn ui-icon-bullets ui-btn-icon-top ui-mini">To-Do List</a></li>
+				<li><a href="#distPage" class="ui-btn ui-icon-search ui-btn-icon-top ui-mini">Distance</a></li>
+				<li><a href="#moneyPage" class="ui-btn ui-icon-edit ui-btn-icon-top ui-mini">Money Tracker</a></li>
+			</ul>
+		</div>
+	   </div>
+	
+	   <div data-role="footer" data-theme="b" data-position="fixed">
+		<h4>Personal Helper</h4>
+	   </div>
+    
+    <!---------------------------------------------------------------------------------------------
+      ---------------------------------------- HOME PAGE ------------------------------------------
+      -------------------------------------------------------------------------------------------->
+    
+	    <div data-role="page" id="home" data-title="Home">
+	       <div role="main" class="ui-content ui-body-a">  
+            <div id="container">
+                <h1>Welcome to the Personal Assistant App</h1>
+                <h2 id="ss">Your currect location</h2>
+                <img id="myPosition">
+            </div>
+	       </div>
+        </div> 
+	
+    <!---------------------------------------------------------------------------------------------
+      ---------------------------------------- TO-DO LIST PAGE ------------------------------------
+      -------------------------------------------------------------------------------------------->
+        
+        <div data-role="page" id="toDoPage" data-title="To-Do List">
+            <div id="container">
+                <h1>To-Do List <i class="fa fa-plus" aria-hidden="true"></i></i></h1>
+                <input type="text" placeholder="Add your next To-Do">
+                <ul id="toDo">
+                    <li><span><i class="fa fa-trash"></i></span> Eat</li>
+                    <li><span><i class="fa fa-trash"></i></span> Sleep</li>
+                    <li><span><i class="fa fa-trash"></i></span> Repeat</li>
+                </ul>
+            </div>
+        </div>
+    	
+    <!---------------------------------------------------------------------------------------------
+      -------------------------------------- DISTANCE PAGE ----------------------------------------
+      -------------------------------------------------------------------------------------------->
+    
+	   <div data-role="page" id="distPage" data-title="Distance">
+	       <div role="main" class="ui-content ui-body-a">
+                <div id="container">
+                    <h1>Find the distance between two places</h1>
+                
+                    <label for="fromLb">From :</label>
+                    <input name="from" id="from" type="text">
+            
+                    <label for="toLb">To :</label>
+                    <input name="to" id="to" type="text">
+
+                    <a id="get" class="ui-btn "><h3>Calculate</h3></a>
+                
+                    <p>duration</p>
+                    <input id="distance"></input>
+            
+                    <p>duration</p>
+                    <input id="duration"></input>
+            
+                </div>
+	       </div> 
+        </div> 
+    
+    <!---------------------------------------------------------------------------------------------
+      --------------------------------------- MONEY PAGE ------------------------------------------
+      -------------------------------------------------------------------------------------------->
+	
+	   <div data-role="page" id="moneyPage" data-title="Money Tracker">
+	       <div role="main" class="ui-content ui-body-a">
+                <div id="containerMoney">
+                    
+                    <h1>Money Tracker</h1>
+                
+                    <p>Monday</p>
+                    <input id="dayInput1" name="a" value=0></input>
+            
+                    <p>Tuesday</p>
+                    <input id="dayInput2" name="b" value=0></input>
+        
+                    <p>Wednesday</p>
+                    <input id="dayInput3" name="c" value=0></input>
+
+                    <p>Thursday</p>
+                    <input id="dayInput4" name="d" value=0></input
+
+                    <p>Friday</p>
+                    <input id="dayInput5" name="e" value=0></input>
+
+                    <p>Saturday</p>
+                    <input id="dayInput6" name="f" value=0></input>
+
+                    <p>Sunday</p>
+                    <input id="dayInput7" name="g" value=0></input>
+
+                    <p>How much do you earn per month</p>
+                    <input id="moneyInput" name="h" value=0></input>
+                </div>
+
+            <div id="containerGraph">
+            
+                <h1>Money spend this Week</h1>
+                <input id="sum" readonly="readonly"></input>
+
+                <h1>Average day cost this week</h1>
+                <input id="avgWeek"></input>
+
+                <h1>How much can I spend?</h1>
+                <input id="moneyToSpend"></input>
+
+                <p id="tip"></<p>
+                <a id="moneyCal" class="ui-btn ui-btn-inline ui-icon-search ui-btn-icon-notext">Calculate</a>
+            </div>
+         </div> 
+       </div>
+		
+      <!---------------------------------------------------------------------------------------------
+      ----------------------------------------- SCRIPTS ---------------------------------------------
+      ---------------------------------------------------------------------------------------------->
+
+        <script type="text/javascript">
+
+		$(document).one("pagebeforecreate", function () 
+        {
+			$( "[data-role='header']" ).enhanceWithin().toolbar();
+			$( "[data-role='footer']" ).toolbar();
+		
+			$("#popupMenu").enhanceWithin().popup();
+		});
+		
+		$(document).on("pagecreate", function()
+        {
+			$(document).on("pagecontainershow", function(){
+				$(".ui-content").height(getRealContentHeight());
+			})
+
+			$(window).on("resize orientationchange", function(){
+				$(".ui-content").height(getRealContentHeight());
+			})
+			
+			function getRealContentHeight()
+            {
+				var activePage = $.mobile.pageContainer.pagecontainer("getActivePage"),
+				screen = $.mobile.getScreenHeight(),
+				header = $(".ui-header").hasClass("ui-header-fixed") ? $(".ui-header").outerHeight() - 1 : $(".ui-header").outerHeight(),
+				footer = $(".ui-footer").hasClass("ui-footer-fixed") ? $(".ui-footer").outerHeight() - 1 : $(".ui-footer").outerHeight(),
+				contentMargins = $(".ui-content", activePage).outerHeight() - $(".ui-content", activePage).height();
+                var contentHeight = screen - header - footer - contentMargins;	
+				return contentHeight;
+			}
+			
+			$( document ).on("pagecontainerchange", function()
+            {
+				navi();
+			});
+			
+			$("div.ui-page").on("swipeleft", function(event)
+            {
+				if(event.handled !== true)
+                {
+					var nextpage = $(this).next("div[data-role='page']");;
+					
+					if (nextpage.length == 0)
+                    {
+						nextpage = $("div[data-role='page']:first");
+					}
+			
+					$.mobile.pageContainer.pagecontainer ("change", nextpage);
+					event.handled = true;
+					navi();
+				}
+                return false;
+			});
+			
+			$("div.ui-page").on("swiperight", function(event)
+            {
+				if(event.handled !== true)
+                {
+					var prevpage = $(this).prev("div[data-role='page']");
+
+					if (prevpage.length == 0)
+                    {
+						prevpage = $("div[data-role='page']:last");
+					}
+					
+					$.mobile.pageContainer.pagecontainer ("change", prevpage);
+					event.handled = true;
+					navi();
+				}
+				return false;
+			});
+			
+			function navi()
+            {
+				// attribute data-title
+				var current = $(".ui-page-active").jqmData("title");
+				
+				$("[data-role='header'] h1").text(current);
+				
+				$("[data-role='navbar'] a.ui-btn-active").removeClass("ui-btn-active");
+				
+				$("[data-role='navbar'] a").each(function()
+                {
+					if ($(this).text() === current)
+                    {
+						$(this).addClass("ui-btn-active");
+					}
+				});
+			}
+		});      
+
+        // Runs the following functions at the creation of the page
+		$(document).on("pagecreate", "#home", function()
+        {
+			console.log("Homepage created");
+            getCurrentLocation();
+        })
+		
+        //Runs the following functions at the creation of the page
+		$(document).on("pagecreate", "#reminderPage", function()
+        {
+			console.log("reminderPage created");		
+            getWeatherLocation();
+		})
+
+    //-----------------------------------------------------------------------------------------------
+    //--------------------------------------- DISTANCE PAGE ------------------------------------------
+    //----------------------------------------------------------------------------------------------- 
+
+         // When the user clicks the distance of two places is calculated using google map api
+         $('#get').click(function(e)
+         {
+            $.ajax(
+            {
+                url: "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins="+$("#from").val()+ "&destinations=" + $("#to").val()+ "&key=AIzaSyDxTPIERyuun_fPeXm7A7NPsHPbvXAc6x0",
+                dataType: "json",
+                timeout: 5000
+            })
+             .done(function(data) 
+            {
+              $("#distance").val(data.rows[0].elements[0].distance.text);
+              $("#duration").val(data.rows[0].elements[0].duration.text);                        
+            })  
+          })
+
+    //-----------------------------------------------------------------------------------------------
+    //--------------------------------------- HOME PAGE ---------------------------------------------
+    //----------------------------------------------------------------------------------------------- 
+        
+       
+        var currentSuccess = function (position) 
+        {
+        Latitude = position.coords.latitude;
+        Longitude = position.coords.longitude;
+        nearbyMap(Latitude, Longitude);
+        }
+       
+         // When the page runs the user get a screenshot from google maps thats displays his location
+        function nearbyMap(lat , lon)
+        {    
+            $("#myPosition").attr("src","http://maps.googleapis.com/maps/api/staticmap?center="+lat+","+lon+"&zoom=15&size=360x360&markers=color:red%7Clabel:A%7C"+lat+","+lon+"&maptype=roadmap18&sensor=false") 
+        }
+        
+         function currentError(error)
+        {
+            console.log('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+        }
+        
+        function getCurrentLocation()
+        {
+            navigator.geolocation.getCurrentPosition(currentSuccess, currentError, { enableHighAccuracy: true });
+        }
+
+    //---------------------------------------------------------------------------------------------
+    //---------------------------------------- TODO PAGE ------------------------------------------
+    //---------------------------------------------------------------------------------------------
+        
+        //Check off/on Specific To-Do's By Clicking
+        $('#toDo').on("click", "li", function()
+        {
+            $(this).toggleClass("completed")
+        });
+
+        //Click on trash icon to delete a To-Do
+        $('#toDo').on("click", "span", function(event)
+        {
+            $(this).parent().fadeOut(500,function()
+            {
+                $(this).remove();
+            });
+        event.stopImmediatePropagation();
+        });
+
+        //Takes the input of the input box when the user presses enter
+        $("input[type='text']").keypress(function(event)
+        {
+            if(event.which === 13)
+            {
+                //grabbing new To-Do text from the input
+                var toDoText = $(this).val();
+                $(this).val("");
+                //creating new li and added to our ul
+                $('#toDo').append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span> " + toDoText + "</li>");
+            } 
+        });
+
+        //Toggle the add new To-Do box
+        $(".fa-plus").click(function()
+        {
+            $("input[type='text']").fadeToggle();
+        });
+        
+    //-----------------------------------------------------------------------------------------------
+    //---------------------------------------- MONEY PAGE -------------------------------------------
+    //----------------------------------------------------------------------------------------------- 
+        
+        $('#moneyCal').click(function(e)
+        {
+            var a = $('input[name="a"]').val();
+            var b = $('input[name="b"]').val();
+            var c = $('input[name="c"]').val();
+            var d = $('input[name="d"]').val();
+            var e = $('input[name="e"]').val();
+            var f = $('input[name="f"]').val();
+            var g = $('input[name="g"]').val();
+            var money = $('input[name="h"]').val();
+            
+            // Sum of all our numbers
+            var sum = parseInt(a) + parseInt(b) + parseInt(c) + parseInt(d) + parseInt(e) + parseInt(f) + parseInt(g);     
+            
+            // Add sum value to our input box
+            $("#sum").val(sum);
+             
+            // Checks if all numbers are not 0
+            if ((a + b + c + d + e + f + g) == 0)
+                {
+                    alert("Please don't use the calculator if you don't spend anything!");
+                    $("#avgWeek").val(0);
+                    $("#moneyToSpend").val(0);
+                }
+            
+            // Checks if your income is 0
+            else if(money == 0)
+                {
+                    alert("Get a job!!!");
+                    $("#avgWeek").val("More than you can handle");
+                    $("#moneyToSpend").val(0);
+                }
+            
+            // Calculates our other 2 input boxxes
+            else
+            {
+                    // Calculates average
+                    var avgWeek = sum / 7 ;
+                    
+                    // Calculates how much can we spend per day in comparison to what we earn
+                    var spendPerDay = (money / 30)
+                    
+                    // Calculates how much money we have left are removing from what we earn what we spend.
+                    var leftovers = spendPerDay - avgWeek;
+                    
+                    // If you have more then you spend
+                    if (leftovers > 0)
+                    {
+                            $("#moneyToSpend").val(spendPerDay);
+                            $("#tip").text("You are doing just fine, you are saving " + leftovers + " euro per day!" )
+                    }
+                    
+                    // If you spend the same amount as you earn
+                    else if (leftovers == 0)
+                    {
+                            $("#moneyToSpend").val(spendPerDay);
+                            $("#tip").text("Wow, you actually manage to spend everything you earn, carry on" )
+                    }
+                    
+                    // If you spend more than you earn
+                    else if (leftovers < 0)
+                    {
+                            $("#moneyToSpend").val(spendPerDay);
+                            $("#tip").text("Seems like we have a problem. You should be spending " + (leftovers * -1) + " euro less per day!!!" );
+                    }
+                    
+                    // In case you don't earn any money at all
+                    else
+                    {
+                            $("#moneyToSpend").val(0);
+                            $("#tip").text("Maybe you should try inputing numbers next time");
+                    }
+        
+                    $("#avgWeek").val(avgWeek);
+            }     
+        });
+        
+   </script>
+
+  </body>
+
+</html>
