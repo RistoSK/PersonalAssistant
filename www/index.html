@@ -57,13 +57,13 @@
     
 	    <div data-role="page" id="home" data-title="Home">
 	       <div role="main" class="ui-content ui-body-a">  
-            <div id="container">
-                <h1>Welcome to the Personal Assistant App</h1>
-                <h2 id="ss">Your currect location</h2>
-                <img id="myPosition">
-            </div>
+            	<div id="container">
+                	<h1>Welcome to the Personal Assistant App</h1>
+                	<h2 id="ss">Your currect location</h2>
+                	<img id="myPosition">
+            	</div>
 	       </div>
-        </div> 
+            </div> 
 	
     <!---------------------------------------------------------------------------------------------
       ---------------------------------------- TO-DO LIST PAGE ------------------------------------
@@ -128,7 +128,7 @@
                     <input id="dayInput3" name="c" value=0></input>
 
                     <p>Thursday</p>
-                    <input id="dayInput4" name="d" value=0></input
+		    <input id="dayInput4" name="d" value=0></input>
 
                     <p>Friday</p>
                     <input id="dayInput5" name="e" value=0></input>
@@ -167,7 +167,7 @@
         <script type="text/javascript">
 
 		$(document).one("pagebeforecreate", function () 
-        {
+        	{
 			$( "[data-role='header']" ).enhanceWithin().toolbar();
 			$( "[data-role='footer']" ).toolbar();
 		
@@ -175,7 +175,7 @@
 		});
 		
 		$(document).on("pagecreate", function()
-        {
+        	{
 			$(document).on("pagecontainershow", function(){
 				$(".ui-content").height(getRealContentHeight());
 			})
@@ -185,29 +185,29 @@
 			})
 			
 			function getRealContentHeight()
-            {
+            		{
 				var activePage = $.mobile.pageContainer.pagecontainer("getActivePage"),
 				screen = $.mobile.getScreenHeight(),
 				header = $(".ui-header").hasClass("ui-header-fixed") ? $(".ui-header").outerHeight() - 1 : $(".ui-header").outerHeight(),
 				footer = $(".ui-footer").hasClass("ui-footer-fixed") ? $(".ui-footer").outerHeight() - 1 : $(".ui-footer").outerHeight(),
 				contentMargins = $(".ui-content", activePage).outerHeight() - $(".ui-content", activePage).height();
-                var contentHeight = screen - header - footer - contentMargins;	
+                		var contentHeight = screen - header - footer - contentMargins;	
 				return contentHeight;
 			}
 			
 			$( document ).on("pagecontainerchange", function()
-            {
+            		{
 				navi();
 			});
 			
 			$("div.ui-page").on("swipeleft", function(event)
-            {
+            		{
 				if(event.handled !== true)
-                {
+                		{
 					var nextpage = $(this).next("div[data-role='page']");;
 					
 					if (nextpage.length == 0)
-                    {
+                    			{
 						nextpage = $("div[data-role='page']:first");
 					}
 			
@@ -215,17 +215,17 @@
 					event.handled = true;
 					navi();
 				}
-                return false;
+                		return false;
 			});
 			
 			$("div.ui-page").on("swiperight", function(event)
-            {
+            		{
 				if(event.handled !== true)
-                {
+                		{
 					var prevpage = $(this).prev("div[data-role='page']");
 
 					if (prevpage.length == 0)
-                    {
+                   			{
 						prevpage = $("div[data-role='page']:last");
 					}
 					
@@ -237,7 +237,7 @@
 			});
 			
 			function navi()
-            {
+            		{
 				// attribute data-title
 				var current = $(".ui-page-active").jqmData("title");
 				
@@ -246,9 +246,9 @@
 				$("[data-role='navbar'] a.ui-btn-active").removeClass("ui-btn-active");
 				
 				$("[data-role='navbar'] a").each(function()
-                {
+                		{
 					if ($(this).text() === current)
-                    {
+                    			{
 						$(this).addClass("ui-btn-active");
 					}
 				});
@@ -257,38 +257,20 @@
 
         // Runs the following functions at the creation of the page
 		$(document).on("pagecreate", "#home", function()
-        {
+        	{
 			console.log("Homepage created");
-            getCurrentLocation();
-        })
+            		getCurrentLocation();
+        	})
 		
         //Runs the following functions at the creation of the page
 		$(document).on("pagecreate", "#reminderPage", function()
-        {
+        	{
 			console.log("reminderPage created");		
-            getWeatherLocation();
 		})
 
-    //-----------------------------------------------------------------------------------------------
-    //--------------------------------------- DISTANCE PAGE ------------------------------------------
-    //----------------------------------------------------------------------------------------------- 
-
-         // When the user clicks the distance of two places is calculated using google map api
-         $('#get').click(function(e)
-         {
-            $.ajax(
-            {
-                url: "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins="+$("#from").val()+ "&destinations=" + $("#to").val()+ "&key=AIzaSyDxTPIERyuun_fPeXm7A7NPsHPbvXAc6x0",
-                dataType: "json",
-                timeout: 5000
-            })
-             .done(function(data) 
-            {
-              $("#distance").val(data.rows[0].elements[0].distance.text);
-              $("#duration").val(data.rows[0].elements[0].duration.text);                        
-            })  
-          })
-
+		
+		
+		
     //-----------------------------------------------------------------------------------------------
     //--------------------------------------- HOME PAGE ---------------------------------------------
     //----------------------------------------------------------------------------------------------- 
@@ -315,7 +297,29 @@
         function getCurrentLocation()
         {
             navigator.geolocation.getCurrentPosition(currentSuccess, currentError, { enableHighAccuracy: true });
-        }
+        }	
+		
+		
+    //-----------------------------------------------------------------------------------------------
+    //--------------------------------------- DISTANCE PAGE ------------------------------------------
+    //----------------------------------------------------------------------------------------------- 
+
+         // When the user clicks the distance of two places is calculated using google map api
+         $('#get').click(function(e)
+         {
+            $.ajax(
+            {
+                url: "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins="+$("#from").val()+ "&destinations=" + $("#to").val()+ "&key=AIzaSyDxTPIERyuun_fPeXm7A7NPsHPbvXAc6x0",
+                dataType: "json",
+                timeout: 5000
+            })
+             .done(function(data) 
+            {
+              $("#distance").val(data.rows[0].elements[0].distance.text);
+              $("#duration").val(data.rows[0].elements[0].duration.text);                        
+            })  
+          })
+
 
     //---------------------------------------------------------------------------------------------
     //---------------------------------------- TODO PAGE ------------------------------------------
